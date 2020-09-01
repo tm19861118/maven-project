@@ -13,10 +13,11 @@ public class Person {
   }
 
  /**
-  * @param someone是人名
+  * @param someone 是人名
   * @return 是字符串
   */
   public final String person(final String someone) {
     return String.format("Hello, %s!", someone);
   }
 }
+
