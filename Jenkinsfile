@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools{
+        maven 'local maven'
+    }
 
     stages {
         stage('Build') {
@@ -8,8 +11,13 @@ pipeline {
             }
             post {
                 success {
-                    echo '开始存储.33..'
+                    echo '开始存储.....'
                     archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+            stage('Deploy to staging'){
+                steps{
+                    build job:'delpoy-to-staging'
                 }
             }
         }
